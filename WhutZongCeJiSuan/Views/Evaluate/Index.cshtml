@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "EvaluateIndex";
+}
+
+<h2>EvaluateIndex</h2>
+<table border="1">
+    <tr>
+        <th>学生序号</th>
+        <th>是否已评价</th>
+        <th>进入评价页</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>XXX</td>
+        <td><a href="@Url.Action("Score", new { id = 1 })">评价该学生</a></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>XXX</td>
+        <td><a href="@Url.Action("Score", new { id = 2 })">评价该学生</a></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>XXX</td>
+        <td><a href="@Url.Action("Score", new { id = 3 })">评价该学生</a></td>
+    </tr>
+</table>
