@@ -28,11 +28,43 @@ namespace WhutZongCeJiSuan.Controllers
                 //从数据集中提取
                 Session["UserID"] = user.First().ID;
                 Session["UserPsd"] = user.First().password;
-                return RedirectToAction("Index", "Account");
+                return RedirectToAction("Index", "Evaluate");
             }
             else
             {
                 return Content("<script>alert('用户名或密码错误！请手动返回上一页重新登录');</script>");
+            }
+        }
+
+        public ActionResult MdfPsw()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MdfPsw(string Psw0, string Psw1, string Psw2)
+        {
+            //这里还有问题，假如session失效了，就会一直报错，应该提前加上session的检查
+            string ID = Session["UserID"].ToString().Trim();
+            var user = from T_Account in db.T_Account where (T_Account.ID == ID) && (T_Account.password == Psw0.ToString().Trim()) select T_Account;
+            if (user.Any() && user.Count() == 1)
+            {
+                if (0 == string.Compare(Psw1, Psw2))
+                {
+                    T_Account user1 = user.First();
+                    user1.password = Psw1;
+                    db.SaveChanges();
+                    return Content("<script>alert('密码修改成功');window.location.href='../Evaluate/index';</script>");
+                }
+                else
+                {
+                    return Content("<script>alert('错误：两次新密码输入不一致');history.go(-1);</script>");
+                }
+            }
+            else
+            {
+                return Content("<script>alert('错误：原密码输入错误');history.go(-1);</script>");
             }
         }
     }

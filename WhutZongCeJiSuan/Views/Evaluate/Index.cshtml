@@ -4,25 +4,19 @@
 }
 
 <h2>EvaluateIndex</h2>
+互评前，请先修改用户密码→<a href="@Url.Action("MdfPsw","Login")">点击修改用户密码</a>
 <table border="1">
     <tr>
         <th>学生序号</th>
         <th>是否已评价</th>
         <th>进入评价页</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>XXX</td>
-        <td><a href="@Url.Action("Score", new { id = 1 })">评价该学生</a></td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>XXX</td>
-        <td><a href="@Url.Action("Score", new { id = 2 })">评价该学生</a></td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>XXX</td>
-        <td><a href="@Url.Action("Score", new { id = 3 })">评价该学生</a></td>
-    </tr>
+    @for (int i = 0; i < 50; i++)
+    {
+        <tr>
+            <td>@(i+1)</td>
+            <td>XXX</td>
+            <td><a href="@Url.Action("Score", new { id = i+1 })">评价该学生</a></td>
+        </tr>
+    }
 </table>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "MdfPsw";
+}
+
+<h2>MdfPsw</h2>
+@using (Html.BeginForm("MdfPsw", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h3>请输入原密码 ：</h3>@Html.Password("Psw0")<br />
+    <h3>请输入新密码 ：</h3>@Html.Password("Psw1")<br />
+    <h3>再次输入新密码 ：</h3>@Html.Password("Psw2")<br />
+    <input type="submit" value="Modify" />
+}
