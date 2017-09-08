@@ -4,5 +4,16 @@
 }
 
 <h2>LoginView</h2>
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h3>用户名：</h3>@Html.TextBox("ID")<br />
+    <h3>密码 ：</h3>@Html.Password("Psw")<br />
+    <input type="submit" value="Login"/>
+}
+@ViewBag.js
+
+    
+
 
 

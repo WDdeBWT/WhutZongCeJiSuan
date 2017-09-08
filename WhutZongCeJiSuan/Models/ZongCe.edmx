@@ -27,7 +27,7 @@
           <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ZongCeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="T_Account" EntityType="Self.T_Account" />
         </EntityContainer>
       </Schema>
@@ -35,7 +35,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ZongCeModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="ZongCeModelStoreContainer" CdmEntityContainer="ZongCeEntities">
           <EntitySetMapping Name="T_Account">
             <EntityTypeMapping TypeName="ZongCeModel.T_Account">
               <MappingFragment StoreEntitySet="T_Account">
