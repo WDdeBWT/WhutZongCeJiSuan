@@ -211,6 +211,9 @@
     <Compile Include="Models\T_Account.cs">
       <DependentUpon>ZongCe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\T_Score.cs">
+      <DependentUpon>ZongCe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ZongCe.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -310,6 +313,7 @@
     <Content Include="Views\Evaluate\Index.cshtml" />
     <Content Include="Views\Login\MdfPsw.cshtml" />
     <Content Include="Views\Evaluate\EvaForm.cshtml" />
+    <Content Include="Views\Evaluate\Evaed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

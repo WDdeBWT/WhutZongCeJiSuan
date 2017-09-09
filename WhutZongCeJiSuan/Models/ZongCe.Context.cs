@@ -26,5 +26,6 @@ namespace WhutZongCeJiSuan.Models
         }
     
         public virtual DbSet<T_Account> T_Account { get; set; }
+        public virtual DbSet<T_Score> T_Score { get; set; }
     }
 }

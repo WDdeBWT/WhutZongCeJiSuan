@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ZongCeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ZongCeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="T_Account">
           <Key>
             <PropertyRef Name="ID" />
@@ -12,11 +12,22 @@
           <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="T_Score">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EvaID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EvaID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="s1" Type="float" Nullable="false" />
+          <Property Name="s2" Type="float" Nullable="false" />
+          <Property Name="s3" Type="float" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="ZongCeModelStoreContainer">
           <EntitySet Name="T_Account" EntityType="Self.T_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Score" EntityType="Self.T_Score" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ZongCeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -29,7 +40,19 @@
         </EntityType>
         <EntityContainer Name="ZongCeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="T_Account" EntityType="Self.T_Account" />
+          <EntitySet Name="T_Score" EntityType="ZongCeModel.T_Score" />
         </EntityContainer>
+        <EntityType Name="T_Score">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EvaID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EvaID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="s1" Type="Double" Nullable="false" />
+          <Property Name="s2" Type="Double" Nullable="false" />
+          <Property Name="s3" Type="Double" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -41,6 +64,17 @@
               <MappingFragment StoreEntitySet="T_Account">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Score">
+            <EntityTypeMapping TypeName="ZongCeModel.T_Score">
+              <MappingFragment StoreEntitySet="T_Score">
+                <ScalarProperty Name="s3" ColumnName="s3" />
+                <ScalarProperty Name="s2" ColumnName="s2" />
+                <ScalarProperty Name="s1" ColumnName="s1" />
+                <ScalarProperty Name="EvaID" ColumnName="EvaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

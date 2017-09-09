@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="ab6ac596e0a2459fb9458a50900cbb7b" Name="Diagram1">
         <EntityTypeShape EntityType="ZongCeModel.T_Account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZongCeModel.T_Score" Width="1.5" PointX="3.375" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
