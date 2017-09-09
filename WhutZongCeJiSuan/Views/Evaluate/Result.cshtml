@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+}
+
+@using WhutZongCeJiSuan.Controllers
+
+<h2>Result</h2><br />
+<a href="@Url.Action("Index")">点击返回评分首页</a><br /><br />
+<table border="1">
+    <tr>
+        <th>序号</th>
+        <th>有效投票（个）</th>
+        <th>思想政治</th>
+        <th>道德修养</th>
+        <th>集体观念</th>
+        <th>学习态度</th>
+        <th>遵纪守法</th>
+        <th>文明习惯</th>
+        <th>总分</th>
+    </tr>
+    @for (int i = 0; i < 50; i++)
+    {
+        if (ViewBag.rm.isvalid[i])
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@ViewBag.rm.num[i]</td>
+                <td>5</td>
+                <td>@ViewBag.rm.sc1[i]</td>
+                <td>@ViewBag.rm.sc2[i]</td>
+                <td>@ViewBag.rm.sc3[i]</td>
+                <td>3</td>
+                <td>3</td>
+                <td>@ViewBag.rm.sct[i]</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@ViewBag.rm.num[i]</td>
+                <td>无数据</td>
+                <td>无数据</td>
+                <td>无数据</td>
+                <td>无数据</td>
+                <td>无数据</td>
+                <td>无数据</td>
+                <td>无数据</td>
+            </tr>
+        }
+
+    }
+</table><br />
+<h5>Note:如某一学生显示无数据，即说明为该学生评分的评委少于3人，无法计算得分</h5>
+

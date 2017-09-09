@@ -3,9 +3,13 @@
     ViewBag.Title = "EvaluateIndex";
 }
 
-<h2>EvaluateIndex</h2>
-互评前，请先修改用户密码→<a href="@Url.Action("MdfPsw","Login")">点击修改用户密码</a>
-查看已评价的学生请点击→<a href="@Url.Action("Evaed")">点击查看已评价学生序号</a>
+<h2>EvaluateIndex</h2><br />
+@if (ViewBag.isadm == true)
+{
+    <a href="@Url.Action("Result")">你是管理员，点击进入统计页面</a><br />
+}
+互评前，请先修改用户密码→<a href="@Url.Action("MdfPsw","Login")">点击修改用户密码</a><br />
+查看已评价的学生请点击→<a href="@Url.Action("Evaed")">点击查看已评价学生序号</a><br /><br />
 <table border="1">
     <tr>
         <th>学生序号</th>

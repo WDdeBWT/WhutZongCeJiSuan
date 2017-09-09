@@ -314,6 +314,7 @@
     <Content Include="Views\Login\MdfPsw.cshtml" />
     <Content Include="Views\Evaluate\EvaForm.cshtml" />
     <Content Include="Views\Evaluate\Evaed.cshtml" />
+    <Content Include="Views\Evaluate\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
