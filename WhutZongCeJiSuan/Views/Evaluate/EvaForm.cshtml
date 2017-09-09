@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "EvaForm";
+}
+
+<h2>EvaForm</h2>
+@using (Html.BeginForm("EvaForm", "Evaluate", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h3>思想道德大项互评表（满分25分）</h3>
+    <h4>当前被评分的同学序号为：@ViewBag.EvaID</h4>
+    <h5>道德修养（满分6分）</h5>
+    <input type="radio" name="score1" value=6><label>A.6分</label><br>
+    <input type="radio" name="score1" value=5.5><label>B.5.5分</label><br>
+    <input type="radio" name="score1" value=5><label>C.5分</label><br>
+    <input type="radio" name="score1" value=4.5><label>D.4.5分</label><br><br>
+    <h5>集体观念（满分3分）</h5>
+    <input type="radio" name="score2" value=3><label>A.3分</label><br>
+    <input type="radio" name="score2" value=2.5><label>B.2.5分</label><br>
+    <input type="radio" name="score2" value=2><label>C.2分</label><br>
+    <input type="radio" name="score2" value=1.5><label>D.1.5分</label><br><br>
+    <h5>学习态度（满分5分）</h5>
+    <input type="radio" name="score3" value=5><label>A.5分</label><br>
+    <input type="radio" name="score3" value=4.5><label>B.4.5分</label><br>
+    <input type="radio" name="score3" value=4><label>C.4分</label><br>
+    <input type="radio" name="score3" value=3.5><label>D.3.5分</label><br><br>
+    <h5>政治思想表现默认满分5分，遵纪守法默认满分3分，文明习惯默认满分3分</h5>
+    <h5>请确认评分是否正确，评分一旦提交默认不允许修改，如有疑问请联系管理员</h5>
+    <input type="hidden" name="EvaID" value="@ViewBag.EvaID" />
+    <input type="submit" value="评分">
+}

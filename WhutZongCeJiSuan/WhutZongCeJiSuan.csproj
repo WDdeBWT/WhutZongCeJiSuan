@@ -309,6 +309,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Evaluate\Index.cshtml" />
     <Content Include="Views\Login\MdfPsw.cshtml" />
+    <Content Include="Views\Evaluate\EvaForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
