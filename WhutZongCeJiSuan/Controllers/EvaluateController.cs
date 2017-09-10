@@ -14,6 +14,10 @@ namespace WhutZongCeJiSuan.Controllers
         // GET: Evaluate
         public ActionResult Index()
         {
+            if (Session["UserID"] == null)
+            {
+                return Content("<script>alert('用户登陆状态已失效，请重新登录');window.location.href='../Login/Index';</script>");
+            }
             string ID = Session["UserID"].ToString().Trim();
             string id = ID.Remove(0, 4);
             if (id == "01")
@@ -40,6 +44,10 @@ namespace WhutZongCeJiSuan.Controllers
             if ((score1 == null) || (score1 == null) || (score1 == null))
             {
                 return Content("<script>alert('错误：请评价全部三项后再提交评分');history.go(-1);</script>");
+            }
+            if (Session["UserID"] == null)
+            {
+                return Content("<script>alert('用户登陆状态已失效，请重新登录');window.location.href='../Login/Index';</script>");
             }
             string ID = Session["UserID"].ToString().Trim();
             EvaID = ID.Substring(0, 4) + "00" + EvaID;//制作被评价学生的学号，例如1503001或者15030038
@@ -70,6 +78,10 @@ namespace WhutZongCeJiSuan.Controllers
         }
         public ActionResult Evaed()
         {
+            if (Session["UserID"] == null)
+            {
+                return Content("<script>alert('用户登陆状态已失效，请重新登录');window.location.href='../Login/Index';</script>");
+            }
             int Num = 0;
             string ID = Session["UserID"].ToString().Trim();
             string msg = "";
@@ -87,6 +99,10 @@ namespace WhutZongCeJiSuan.Controllers
 
         public ActionResult Result()
         {
+            if (Session["UserID"] == null)
+            {
+                return Content("<script>alert('用户登陆状态已失效，请重新登录');window.location.href='../Login/Index';</script>");
+            }
             string ID = Session["UserID"].ToString().Trim();
             string ClassId = ID.Substring(0, 4);
             ResultModel rm = new ResultModel();

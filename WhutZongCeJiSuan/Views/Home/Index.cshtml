@@ -3,29 +3,33 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h2>WHUT-综测在线互评系统</h2>
+    <p class="lead">
+        综测在线互评系统是一个拥有在线评分，评价进度统计和自动计算结果功能的web系统，旨在简化互评流程，
+        确保流程公平公正公开，保证评价人和被评价人的个人权益
+    </p>
+    <p><a href="@Url.Action("Index","Login")" class="btn btn-primary btn-lg">进入互评系统 &raquo;</a></p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    <h3>使用说明</h3>
+    <p>
+        ①点击上方的“进入互评系统”按钮进入系统，使用分配给你的账户和密码登陆系统
+    </p>
+    <p>
+        ②第一次进入系统，首先点击“点击查看已评价学生序号”链接，确认该账户没有评价记录。如有疑问，请联系管理员
+    </p>
+    <p>
+        ③返回评价系统首页，点击“点击修改用户密码”链接，修改账户密码，保证账户不被他人篡改。Note:因为系统安全防护水平有限，请勿使用与其他账户相同的密码，谨防被盗
+    </p>
+    <p>
+        ④从互评首页可按照序号进入评价页面，对一位学生评分后，分数会自动保存，无法更改。如有疑问，请联系管理员
+    </p>
+    <p>
+        ⑤每个班级账户的01号为管理员账户，管理员账户可以查看本班已评价人数和最后的分数统计
+    </p>
+    <p>
+        Note:本工程为开源项目，源代码托管在github上，欢迎大佬贡献代码并提出改进意见
+    </p>
+    <p><a class="btn btn-default" href="https://github.com/WDdeBWT/WhutZongCeJiSuan">进入本工程的github页面 &raquo;</a></p>
 </div>

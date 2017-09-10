@@ -32,7 +32,7 @@ namespace WhutZongCeJiSuan.Controllers
             }
             else
             {
-                return Content("<script>alert('用户名或密码错误！请手动返回上一页重新登录');</script>");
+                return Content("<script>alert('用户名或密码错误！');history.go(-1);</script>");
             }
         }
 
@@ -45,7 +45,10 @@ namespace WhutZongCeJiSuan.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult MdfPsw(string Psw0, string Psw1, string Psw2)
         {
-            //这里还有问题，假如session失效了，就会一直报错，应该提前加上session的检查
+            if (Session["UserID"] == null)
+            {
+                return Content("<script>alert('用户登陆状态已失效，请重新登录');window.location.href='../Login/Index';</script>");
+            }
             string ID = Session["UserID"].ToString().Trim();
             var user = from T_Account in db.T_Account where (T_Account.ID == ID) && (T_Account.password == Psw0.ToString().Trim()) select T_Account;
             if (user.Any() && user.Count() == 1)

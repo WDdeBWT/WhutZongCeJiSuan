@@ -261,6 +261,7 @@
     <Content Include="Models\ZongCe.edmx.diagram">
       <DependentUpon>ZongCe.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\WhutZongCeJiSuan.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
