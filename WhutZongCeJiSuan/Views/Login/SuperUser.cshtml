@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "SuperUser";
+}
+
+<h2>SuperUser</h2>
+@using (Html.BeginForm("SuperUser", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h5>班级账户开户</h5>
+    <h5>请输入班级代码 ：</h5>@Html.TextBox("ClassID")<br />
+    <h5>请输入班级人数 ：</h5>@Html.TextBox("ClassNum")<br />
+    <input type="submit" value="submit" />
+}
+

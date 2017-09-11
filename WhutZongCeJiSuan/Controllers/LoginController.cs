@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WhutZongCeJiSuan.Models;
 using System.Text;
+using System.Data.Entity.Validation;
 
 namespace WhutZongCeJiSuan.Controllers
 {
@@ -28,7 +29,14 @@ namespace WhutZongCeJiSuan.Controllers
                 //从数据集中提取
                 Session["UserID"] = user.First().ID;
                 Session["UserPsd"] = user.First().password;
-                return RedirectToAction("Index", "Evaluate");
+                if (user.First().ID == "999999")
+                {
+                    return RedirectToAction("SuperUser", "Login");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Evaluate");
+                }
             }
             else
             {
@@ -70,5 +78,37 @@ namespace WhutZongCeJiSuan.Controllers
                 return Content("<script>alert('错误：原密码输入错误');history.go(-1);</script>");
             }
         }
-    }
+
+        public ActionResult SuperUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SuperUser(string ClassID, string ClassNum)
+        {
+            if (Session["UserID"].ToString().Trim() != "999999")
+            {
+                return Content("<script>alert('用户权限错误');window.location.href='../Login/Index';</script>");
+            }
+            int num = int.Parse(ClassNum);
+            for (int i=0; i<num; i++)
+            {
+                T_Account user = new T_Account();
+                user.ID = ClassID + (i + 1).ToString("00");
+                user.password = ClassID + (i + 1).ToString("00");
+                db.T_Account.Add(user);
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    return Content("<script>alert('错误：数据库保存错误，请联系管理员');history.go(-1);</script>");
+                }
+            }
+            return Content("<script>alert('保存成功！');history.go(-1);</script>");
+        }
+        }
 }
