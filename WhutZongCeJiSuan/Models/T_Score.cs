@@ -19,5 +19,6 @@ namespace WhutZongCeJiSuan.Models
         public double s1 { get; set; }
         public double s2 { get; set; }
         public double s3 { get; set; }
+        public double s4 { get; set; }
     }
 }

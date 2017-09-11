@@ -39,11 +39,11 @@ namespace WhutZongCeJiSuan.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EvaForm(string score1, string score2, string score3, string EvaID)
+        public ActionResult EvaForm(string score1, string score2, string score3, string score4, string EvaID)
         {
-            if ((score1 == null) || (score1 == null) || (score1 == null))
+            if ((score1 == null) || (score2 == null) || (score3 == null) || (score4 == null))
             {
-                return Content("<script>alert('错误：请评价全部三项后再提交评分');history.go(-1);</script>");
+                return Content("<script>alert('错误：请评价全部四项后再提交评分');history.go(-1);</script>");
             }
             if (Session["UserID"] == null)
             {
@@ -59,12 +59,14 @@ namespace WhutZongCeJiSuan.Controllers
             float s1 = float.Parse(score1);
             float s2 = float.Parse(score2);
             float s3 = float.Parse(score3);
+            float s4 = float.Parse(score4);
             T_Score sc = new T_Score();
             sc.ID = ID;
             sc.EvaID = EvaID;
             sc.s1 = s1;
             sc.s2 = s2;
             sc.s3 = s3;
+            sc.s4 = s4;
             db.T_Score.Add(sc);
             try
             {
@@ -112,6 +114,7 @@ namespace WhutZongCeJiSuan.Controllers
                 float s1 = 0;
                 float s2 = 0;
                 float s3 = 0;
+                float s4 = 0;
                 string EvaID = ClassId + "00" + (i+1).ToString();
                 var allrecord = from T_Score in db.T_Score where (T_Score.EvaID == EvaID) orderby T_Score.EvaID select T_Score;
                 if (allrecord.Count() < 3)
@@ -125,6 +128,7 @@ namespace WhutZongCeJiSuan.Controllers
                     s1 += (float)record.s1;
                     s2 += (float)record.s2;
                     s3 += (float)record.s3;
+                    s4 += (float)record.s4;
                     j++;
                 }
                 rm.isvalid[i] = true;
@@ -132,7 +136,8 @@ namespace WhutZongCeJiSuan.Controllers
                 rm.sc1[i] = s1 / j;
                 rm.sc2[i] = s2 / j;
                 rm.sc3[i] = s3 / j;
-                rm.sct[i] = rm.sc1[i] + rm.sc2[i] + rm.sc3[i] + 11;
+                rm.sc4[i] = s4 / j;
+                rm.sct[i] = rm.sc1[i] + rm.sc2[i] + rm.sc3[i] + rm.sc4[i] + 8;
             }
             ViewBag.rm = rm;
             return View();
@@ -145,6 +150,7 @@ namespace WhutZongCeJiSuan.Controllers
         public float[] sc1 = new float[50];
         public float[] sc2 = new float[50];
         public float[] sc3 = new float[50];
+        public float[] sc4 = new float[50];
         public float[] sct = new float[50];
         public int[] num = new int[50];
     }
