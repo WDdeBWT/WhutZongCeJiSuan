@@ -81,6 +81,12 @@ namespace WhutZongCeJiSuan.Controllers
 
         public ActionResult SuperUser()
         {
+            var Query1 = from T_Account in db.T_Account select T_Account;
+            int count1 = Query1.Count();
+            var Query2 = from T_Score in db.T_Score select T_Score;
+            int count2 = Query2.Count();
+            ViewBag.count1 = count1;
+            ViewBag.count2 = count2;
             return View();
         }
 
