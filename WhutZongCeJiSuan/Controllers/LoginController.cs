@@ -85,8 +85,30 @@ namespace WhutZongCeJiSuan.Controllers
             int count1 = Query1.Count();
             var Query2 = from T_Score in db.T_Score select T_Score;
             int count2 = Query2.Count();
+            float s1 = 0;
+            float s2 = 0;
+            float s3 = 0;
+            float s4 = 0;
+            float st = 0;
+            foreach (T_Score sc in Query2)
+            {
+                s1 += (float)sc.s1;
+                s2 += (float)sc.s2;
+                s3 += (float)sc.s3;
+                s4 += (float)sc.s4;
+            }
+            s1 = s1 / count2;
+            s2 = s2 / count2;
+            s3 = s3 / count2;
+            s4 = s4 / count2;
+            st = s1 + s2 + s3 + s4 + 8;
             ViewBag.count1 = count1;
             ViewBag.count2 = count2;
+            ViewBag.s1 = s1;
+            ViewBag.s2 = s2;
+            ViewBag.s3 = s3;
+            ViewBag.s4 = s4;
+            ViewBag.st = st;
             return View();
         }
 
